@@ -92,7 +92,7 @@ THEMES = {
 
 st.set_page_config(
     page_title="Spam Shield AI",
-    page_icon="shield",
+    page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="collapsed",
 )

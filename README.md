@@ -181,6 +181,32 @@ The app includes:
 - model metrics view
 - evaluation chart view
 
+## Free Deployment
+
+This project is ready to deploy on **Streamlit Community Cloud**.
+
+Deployment settings:
+
+- Repository: `Sandeep9026/Email-spam-classifier`
+- Branch: `main`
+- Main file path: `app.py`
+
+Deployment steps:
+
+1. Open `https://share.streamlit.io`
+2. Sign in with GitHub
+3. Click `Create app`
+4. Select the repository and branch above
+5. Set the main file path to `app.py`
+6. Click `Deploy`
+
+The repository already includes:
+
+- a valid `requirements.txt`
+- the trained model artifact
+- generated report files
+- the Streamlit entrypoint
+
 ## Output Artifacts
 
 After training, the project generates:
