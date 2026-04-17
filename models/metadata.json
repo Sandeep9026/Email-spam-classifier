@@ -1,0 +1,10 @@
+{
+  "best_model_name": "svm",
+  "dataset_path": "C:\\Users\\acer\\Desktop\\emailSpamClassifier\\data\\spam.csv",
+  "test_size": 0.2,
+  "total_samples": 5574,
+  "class_distribution": {
+    "ham": 4827,
+    "spam": 747
+  }
+}

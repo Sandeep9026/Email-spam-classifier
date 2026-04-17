@@ -1,0 +1,59 @@
+{
+  "naive_bayes": {
+    "model_name": "naive_bayes",
+    "accuracy": 0.9551569506726457,
+    "precision": 0.7734806629834254,
+    "recall": 0.9395973154362416,
+    "f1": 0.8484848484848485,
+    "avg_spam_probability": 0.2575351194533488,
+    "classification_report": "              precision    recall  f1-score   support\n\n         ham       0.99      0.96      0.97       966\n        spam       0.77      0.94      0.85       149\n\n    accuracy                           0.96      1115\n   macro avg       0.88      0.95      0.91      1115\nweighted avg       0.96      0.96      0.96      1115\n",
+    "confusion_matrix": [
+      [
+        925,
+        41
+      ],
+      [
+        9,
+        140
+      ]
+    ]
+  },
+  "logistic_regression": {
+    "model_name": "logistic_regression",
+    "accuracy": 0.9775784753363229,
+    "precision": 0.9078947368421053,
+    "recall": 0.9261744966442953,
+    "f1": 0.9169435215946844,
+    "avg_spam_probability": 0.22409723609264567,
+    "classification_report": "              precision    recall  f1-score   support\n\n         ham       0.99      0.99      0.99       966\n        spam       0.91      0.93      0.92       149\n\n    accuracy                           0.98      1115\n   macro avg       0.95      0.96      0.95      1115\nweighted avg       0.98      0.98      0.98      1115\n",
+    "confusion_matrix": [
+      [
+        952,
+        14
+      ],
+      [
+        11,
+        138
+      ]
+    ]
+  },
+  "svm": {
+    "model_name": "svm",
+    "accuracy": 0.9838565022421525,
+    "precision": 0.9455782312925171,
+    "recall": 0.9328859060402684,
+    "f1": 0.9391891891891891,
+    "avg_spam_probability": 0.13170946555285273,
+    "classification_report": "              precision    recall  f1-score   support\n\n         ham       0.99      0.99      0.99       966\n        spam       0.95      0.93      0.94       149\n\n    accuracy                           0.98      1115\n   macro avg       0.97      0.96      0.96      1115\nweighted avg       0.98      0.98      0.98      1115\n",
+    "confusion_matrix": [
+      [
+        958,
+        8
+      ],
+      [
+        10,
+        139
+      ]
+    ]
+  }
+}
