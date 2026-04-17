@@ -1,24 +1,55 @@
 # Spam Email Classifier
 
-An end-to-end NLP project that detects whether an email-like message is **Spam** or **Not Spam** using classical machine learning. The project is designed as a showcase-ready portfolio piece with clean structure, reproducible training, evaluation artifacts, and a polished Streamlit interface for inference.
+An end-to-end NLP project that classifies messages as **Spam** or **Not Spam** using classical machine learning, a real public dataset, evaluation reporting, saved model artifacts, and a polished Streamlit web app.
 
-## Features
+## Overview
 
-- Text preprocessing with lowercase normalization, punctuation removal, stopword filtering, and token extraction
-- TF-IDF vectorization with unigram and bigram support
-- Three trained classifiers:
-  - Naive Bayes
-  - Logistic Regression
-  - Support Vector Machine (SVM)
-- Evaluation using accuracy, precision, recall, F1-score, and confusion matrices
-- Imbalance handling with:
-  - class weighting for Logistic Regression and SVM
-  - minority class upsampling on the training split
-- Automatic best-model selection based on evaluation performance
-- Saved production artifact for inference using `joblib`
-- Streamlit app for single-email and batch-email prediction
-- Custom light and dark theme modes in the Streamlit UI
-- Logging for traceable training and artifact generation
+This project is designed as a portfolio-ready machine learning application for showcasing:
+
+- NLP preprocessing for short-text classification
+- comparative modeling with multiple ML algorithms
+- imbalanced-data handling
+- evaluation with business-relevant metrics
+- deployment-style inference through a web UI
+
+The app uses the **UCI SMS Spam Collection** dataset and compares **Naive Bayes**, **Logistic Regression**, and **Support Vector Machine (SVM)** models before saving the best-performing pipeline for inference.
+
+## Highlights
+
+- Real public dataset with `5,574` labeled messages
+- TF-IDF text vectorization with unigram and bigram features
+- Three ML models trained and benchmarked
+- Precision, recall, F1-score, and confusion matrix analysis
+- Handling of class imbalance using upsampling and class weighting
+- Saved trained model with `joblib`
+- Streamlit UI for single-message and batch prediction
+- Custom light and dark theme experience
+- Generated reports and visualizations ready for presentation
+
+## Best Model Performance
+
+Current saved best model: `svm`
+
+| Metric | Score |
+|---|---:|
+| Accuracy | 98.39% |
+| Precision | 94.56% |
+| Recall | 93.29% |
+| F1-score | 93.92% |
+
+Metrics source: [reports/metrics_summary.csv](reports/metrics_summary.csv)
+
+## Tech Stack
+
+- Python
+- scikit-learn
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- nltk
+- Streamlit
+- joblib
 
 ## Project Structure
 
@@ -29,16 +60,17 @@ emailSpamClassifier/
 +-- utils.py
 +-- requirements.txt
 +-- README.md
++-- .gitignore
 +-- data/
 |   +-- spam.csv
-|   +-- sms_spam_collection.zip            # downloaded UCI archive
-|   `-- sms_spam_collection_raw/           # extracted original files
+|   +-- sms_spam_collection.zip
+|   `-- sms_spam_collection_raw/
 +-- models/
-|   +-- spam_classifier.joblib             # generated after training
-|   `-- metadata.json                      # generated after training
+|   +-- spam_classifier.joblib
+|   `-- metadata.json
 `-- reports/
-    +-- detailed_metrics.json              # generated after training
-    +-- metrics_summary.csv                # generated after training
+    +-- detailed_metrics.json
+    +-- metrics_summary.csv
     `-- figures/
         +-- class_distribution.png
         +-- confusion_matrix_*.png
@@ -47,30 +79,58 @@ emailSpamClassifier/
 
 ## Dataset
 
-The repository now bundles the real **SMS Spam Collection** dataset from the **UCI Machine Learning Repository**, converted into the project CSV format at [data/spam.csv](data/spam.csv).
+This repository uses the **SMS Spam Collection** dataset from the **UCI Machine Learning Repository**.
 
-- `label`: `ham` or `spam`
-- `text`: raw message text
-
-Dataset source:
-
-- UCI Machine Learning Repository: SMS Spam Collection
+- Source: UCI Machine Learning Repository
+- Dataset: SMS Spam Collection
 - DOI: `10.24432/C5CC84`
 - License: `CC BY 4.0`
 
-Current bundled dataset size:
+Dataset profile:
 
 - `5,574` total messages
 - `4,827` ham messages
 - `747` spam messages
 
-The original downloaded archive and extracted raw files are also kept in the `data/` folder for provenance.
+The repository keeps both the converted CSV used by the project and the original downloaded archive for provenance.
 
-## Why Precision and Recall Matter
+## How It Works
 
-- **Precision** is important because false positives can move legitimate emails into spam, causing users to miss important communication.
-- **Recall** is important because false negatives allow malicious or unwanted emails to reach the inbox.
-- In spam detection, an effective model needs a strong balance between both, so the project also compares **F1-score** when selecting the best model.
+### 1. Preprocessing
+
+- lowercase normalization
+- punctuation cleanup
+- stopword removal
+- token filtering
+- TF-IDF vectorization
+
+### 2. Model Training
+
+The training pipeline benchmarks:
+
+- Naive Bayes
+- Logistic Regression
+- Support Vector Machine
+
+### 3. Evaluation
+
+Each model is evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+
+### 4. Deployment
+
+The best model is saved and loaded into the Streamlit app for real-time predictions.
+
+## Why Precision And Recall Matter
+
+- **Precision** matters because false positives can send legitimate messages to spam.
+- **Recall** matters because false negatives allow spam to reach the inbox.
+- A useful spam detector needs a strong balance of both, which is why **F1-score** is tracked for model selection.
 
 ## Installation
 
@@ -80,7 +140,9 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Train the Models
+## Training
+
+Run model training:
 
 ```bash
 python train.py
@@ -95,41 +157,54 @@ python train.py --data-path data/spam.csv --test-size 0.2
 Training will:
 
 - preprocess the dataset
-- visualize class distribution
-- upsample the minority class on the training split
-- train and compare 3 ML models
-- save confusion matrices and comparison charts
-- persist the best model in `models/spam_classifier.joblib`
+- generate the class-distribution chart
+- handle class imbalance on the training split
+- train all models
+- save comparison metrics
+- save confusion matrices
+- persist the best model to `models/spam_classifier.joblib`
 
-## Launch the Streamlit App
+## Run The App
+
+Launch the Streamlit UI:
 
 ```bash
 streamlit run app.py
 ```
 
-The UI supports:
+The app includes:
 
-- single email prediction
-- batch prediction with one email per line
-- prediction probability display
-- theme switching between light and dark mode
-- model performance preview
+- single-message prediction
+- batch-message prediction
+- probability and confidence display
+- theme switching
+- model metrics view
+- evaluation chart view
 
-## Model Performance
+## Output Artifacts
 
-After training on the UCI SMS Spam Collection dataset, the best model is currently `svm`.
+After training, the project generates:
 
-Latest saved metrics in [reports/metrics_summary.csv](reports/metrics_summary.csv):
+- [models/spam_classifier.joblib](models/spam_classifier.joblib)
+- [models/metadata.json](models/metadata.json)
+- [reports/metrics_summary.csv](reports/metrics_summary.csv)
+- [reports/detailed_metrics.json](reports/detailed_metrics.json)
+- evaluation charts in [reports/figures](reports/figures)
 
-- Accuracy: `98.39%`
-- Precision: `94.56%`
-- Recall: `93.29%`
-- F1-score: `93.92%`
+## Recruiter Notes
 
-The Streamlit app reads the same artifacts and displays the selected best model automatically.
+This project is a strong portfolio example because it demonstrates:
 
-## Notes for Recruiters / Reviewers
+- applied NLP workflow design
+- model comparison and validation
+- handling of imbalanced classes
+- reproducible training artifacts
+- practical UI integration for inference
 
-- The codebase keeps business logic modular and easy to extend.
-- The saved pipeline handles both vectorization and classification for deployment simplicity.
-- The project can be upgraded further with richer datasets, hyperparameter tuning, and experiment tracking tools like MLflow.
+## Future Improvements
+
+- hyperparameter tuning with grid search
+- probability calibration
+- email-specific dataset expansion beyond SMS
+- API deployment with FastAPI
+- experiment tracking with MLflow
