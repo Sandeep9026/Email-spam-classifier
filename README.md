@@ -2,6 +2,8 @@
 
 An end-to-end NLP project that classifies messages as **Spam** or **Not Spam** using classical machine learning, a real public dataset, evaluation reporting, saved model artifacts, and a polished Streamlit web app.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-1d4ed8?style=for-the-badge)](https://sandeep-email-spam-classifier.streamlit.app/)
+
 ## Overview
 
 This project is designed as a portfolio-ready machine learning application for showcasing:
@@ -13,6 +15,11 @@ This project is designed as a portfolio-ready machine learning application for s
 - deployment-style inference through a web UI
 
 The app uses the **UCI SMS Spam Collection** dataset and compares **Naive Bayes**, **Logistic Regression**, and **Support Vector Machine (SVM)** models before saving the best-performing pipeline for inference.
+
+## Live Demo
+
+- App URL: [https://sandeep-email-spam-classifier.streamlit.app/](https://sandeep-email-spam-classifier.streamlit.app/)
+- Best for recruiters and reviewers who want to try the model without running the project locally
 
 ## Highlights
 
@@ -180,6 +187,12 @@ The app includes:
 - theme switching
 - model metrics view
 - evaluation chart view
+
+## Screenshots
+
+### Streamlit App
+
+![Spam Shield AI homepage](assets/screenshots/streamlit-home.png)
 
 ## Free Deployment
 
